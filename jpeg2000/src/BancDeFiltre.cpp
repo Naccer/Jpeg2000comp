@@ -17,7 +17,10 @@ void interpolation2(double* x,int taille){
 
     for(int i(0);i<taille/2;i++){
 
-        x[2*i+1]=0;
+
+
+        x[2*i+1]=0.0;
+
     }
 
 }
@@ -31,9 +34,9 @@ void decimation2(double* x,int taille){
 
     }
 
-     for(int i(4);i<taille;i++){
+     for(int i(taille/2);i<taille;i++){
 
-         x[i]=0;
+         x[i]=0.0;
 
     }
 
