@@ -12,7 +12,9 @@ void convolve( double Signal[/* SignalLen */], size_t SignalLen,const double Ker
               size_t KernelLen
               );
 
+void analyse_haar(double* x,int p);
 
+void synthese_haar(double* x,int p);
 
 
 #endif // BANCDEFILTRE_H
