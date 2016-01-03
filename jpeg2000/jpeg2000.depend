@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1451851170 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/main.cpp
+	<iostream>
+	<string>
+	"BancDeFiltre.h"
+	"util.h"
+
+1451848869 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/BancDeFiltre.h
+	<iostream>
+
+1451754182 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/util.h
+	<cstdio>
+
+1451848525 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/BancDeFiltre.cpp
+	"BancDeFiltre.h"
+	"util.h"
+	<iostream>
+	<cmath>
+
+1451851048 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/util.cpp
+	"util.h"
+	<cmath>
+
