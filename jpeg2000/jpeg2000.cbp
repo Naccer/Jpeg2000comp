@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,10 +34,17 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/BancDeFiltre.h" />
+		<Unit filename="include/util.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/BancDeFiltre.cpp" />
+		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<code_completion />
-			<debugger />
+			<debugger>
+				<search_path add="src" />
+				<search_path add="include" />
+			</debugger>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
