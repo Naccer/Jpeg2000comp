@@ -16,5 +16,12 @@ void analyse_haar(double* x,int p);
 
 void synthese_haar(double* x,int p);
 
+void analyse_97(double* x,int p);
+
+void synthese_97(double* x,int p);
+
+
+double moindre_carre(double*x,double* y, int p);
+
 
 #endif // BANCDEFILTRE_H
