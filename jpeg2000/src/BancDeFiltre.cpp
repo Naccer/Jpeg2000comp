@@ -39,44 +39,69 @@ void decimation2(double* x,int taille){
 }
 
 
-
-
-void convolve(double* Signal, size_t SignalLen,const double Kernel[/* KernelLen */],
-              size_t KernelLen
-              )
+void convolve(double *x,int size_x, double *h, int size_h)
 {
+	double *f = new double[size_x];
+	for (int n = 0; n<size_x; n++)
+	{
+		f[n] = 0;
 
-  double Result[ SignalLen + KernelLen-1 ];
-  size_t n;
-
-  for (n = 0; n < SignalLen+KernelLen-1; n++)
-  {
-    size_t kmin, kmax, k;
-
-    Result[n] = 0;
-
-    kmin = (n >= KernelLen - 1) ? n - (KernelLen - 1) : 0;
-    kmax = (n < SignalLen - 1) ? n : SignalLen - 1;
-
-    for (k = kmin; k <= kmax; k++)
-    {
-      Result[n] += Signal[k] * Kernel[n - k];
-
-    }
+		for (int k = -(size_h/2); k <= (size_h/2); k++)
+		{
+			int pos = n - k;
+			if (pos < 0)
+				pos = -pos;
+			if (pos >= size_x)
+				pos = size_x- 1 - (pos - (size_x - 1));
+			f[n] = f[n] + h[k + size_h/2] * x[pos];
+		}
 
 
-  }
+	}
 
-  for (int k = 0; k <= SignalLen; k++)
-    {
-
-       Signal[k]=Result[k];
-
-    }
-
-
+	for (int i = 0; i < size_x; i++)
+	{
+			x[i] = f[i];
+	}
 
 }
+
+//void convolve(double* Signal, size_t SignalLen,const double Kernel[/* KernelLen */],
+//              size_t KernelLen
+//              )
+//{
+//
+//  double Result[ SignalLen + KernelLen-1 ];
+//  size_t n;
+//
+//  for (n = 0; n < SignalLen+KernelLen-1; n++)
+//  {
+//    size_t kmin, kmax, k;
+//
+//    Result[n] = 0;
+//
+//    kmin = (n >= KernelLen - 1) ? n - (KernelLen - 1) : 0;
+//    kmax = (n < SignalLen - 1) ? n : SignalLen - 1;
+//
+//    for (k = kmin; k <= kmax; k++)
+//    {
+//      Result[n] += Signal[k] * Kernel[n - k];
+//
+//    }
+//
+//
+//  }
+//
+//  for (int k = 0; k <= SignalLen; k++)
+//    {
+//
+//       Signal[k]=Result[k];
+//
+//    }
+//
+//
+//
+//}
 
 
 
@@ -112,7 +137,7 @@ void analyse_haar(double* x,int p){
 
     }
 
-    //print_signal(x,p);
+   // print_signal(x,p);
 
 }
 
@@ -139,10 +164,18 @@ void synthese_haar(double* x,int p){
 
     interpolation2(xbi,p);
 
+    //print_signal(xbi,p);
+
     interpolation2(xhi,p);
 
+   //   print_signal(xhi,p);
+
     convolve(xbi,p,_g0,3);
+
+ //     print_signal(xbi,p);
     convolve(xhi,p,_g1,3);
+
+//   print_signal(xhi,p);
 
  //print_signal(xbi,p);
 
@@ -152,6 +185,8 @@ void synthese_haar(double* x,int p){
         x[i]=xbi[i]+xhi[i];
 
     }
+
+      print_signal(x,p);
 
    // print_signal(x,p);
 
