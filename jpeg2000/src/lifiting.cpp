@@ -166,7 +166,7 @@ void analyse_97_lifting(double* x,int p){
     a=1/1.149604398;
     mise_a_lechelle(x,p,a);
 
-    mise_en_forme(x,p);
+  mise_en_forme(x,p);
 
 
 
@@ -191,8 +191,6 @@ void synthese_97_lifting(double* x,int p){
 
     a=1.586134342;
     prediction1(x,p,a);
-
-
 
 }
 
