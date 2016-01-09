@@ -1,31 +1,46 @@
 # depslib dependency file v1.0
-1452138610 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/main.cpp
+1452355812 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/main.cpp
 	<iostream>
 	<string>
 	"BancDeFiltre.h"
 	"util.h"
 	"lifiting.h"
+	"amr.h"
 	<cmath>
+	<inttypes.h>
 
 1451848869 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/BancDeFiltre.h
 	<iostream>
 
-1452133891 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/util.h
+1452279587 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/util.h
 	<iostream>
 	<cmath>
 	<cstdio>
+	<stdlib.h>
+	<inttypes.h>
 
-1452131609 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/BancDeFiltre.cpp
+1452215735 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/BancDeFiltre.cpp
 	"BancDeFiltre.h"
 	"util.h"
 	<iostream>
 	<cmath>
 
-1452138650 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/util.cpp
+1452275938 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/util.cpp
 	"util.h"
 
-1452138317 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/lifiting.cpp
+1452146581 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/lifiting.cpp
 	"lifiting.h"
 
-1452138210 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/lifiting.h
+1452142671 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/lifiting.h
+
+1452364374 /home/tabib/Projects/Jpeg2000comp/jpeg2000/include/amr.h
+	<iostream>
+	<cmath>
+	<inttypes.h>
+	"lifiting.h"
+	"util.h"
+
+1452364450 source:/home/tabib/Projects/Jpeg2000comp/jpeg2000/src/amr.cpp
+	"amr.h"
+	"BancDeFiltre.h"
 

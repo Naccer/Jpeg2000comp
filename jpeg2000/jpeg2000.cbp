@@ -35,9 +35,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/BancDeFiltre.h" />
+		<Unit filename="include/amr.h" />
+		<Unit filename="include/lifiting.h" />
 		<Unit filename="include/util.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/BancDeFiltre.cpp" />
+		<Unit filename="src/amr.cpp" />
+		<Unit filename="src/lifiting.cpp" />
 		<Unit filename="src/util.cpp" />
 		<Extensions>
 			<code_completion />
