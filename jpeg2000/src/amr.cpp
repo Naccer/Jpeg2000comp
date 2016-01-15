@@ -23,10 +23,41 @@ void iamr(double* x,int p,int niveau){
     for(int level=niveau-1;level>= 0;level--){
 
         int taille=p/pow(2,level);
-
         synthese_97(x,taille);
     }
 }
+
+
+double maximum(int _i,int _j,double* x){
+
+    double minimum=x[_i];
+    double maximum=x[_i];
+    double moyenne=x[_i];
+
+    double sum=0;
+
+    for(int i=_i;i<_j;i++){
+        if(x[i]<minimum)
+        {
+            minimum=x[i];
+
+        }
+
+        if(x[i]>maximum)
+        {
+            maximum=x[i];
+        }
+
+        sum+=x[i];
+    }
+
+    moyenne=sum/(_j-_i);
+
+    return maximum;
+    cout<<endl;
+
+ }
+
 
 
 void min_max_moyenne(int _i,int _j,double* x){
@@ -54,10 +85,10 @@ void min_max_moyenne(int _i,int _j,double* x){
 
     moyenne=sum/(_j-_i);
 
-//    cout<<minimum<<endl;
-//    cout<<maximum<<endl;
-//    cout<<moyenne<<endl;
-//    cout<<endl;
+    cout<<minimum<<endl;
+    cout<<maximum<<endl;
+    cout<<moyenne<<endl;
+    cout<<endl;
 
  }
 
@@ -79,6 +110,8 @@ void min_max_moyenne(int _i,int _j,double* x){
     min_max_moyenne(_i,_j,x);
 
     }
+
+
  }
 
  void analyse2D_97(double* m,uint32_t width,uint32_t length){
@@ -92,7 +125,8 @@ void min_max_moyenne(int _i,int _j,double* x){
             temp[j]=m[i+width*j];
 
         }
-
+int v=5;
+double a[v];
 
         analyse_97(temp,width);
 
@@ -111,6 +145,9 @@ void min_max_moyenne(int _i,int _j,double* x){
             temp[j]=m[i*width+j];
 
         }
+
+        int v=5;
+double a[v];
 
         analyse_97(temp,width);
 
@@ -176,45 +213,6 @@ void ajuster_image(double* m,int p){
 }
 
 
- void amr2D_97_bis(double* m,int p,int l){
-
-
-
-    for(int level=0;level<l;level++)
-    {
-
-        int taille=p/pow(2,level);
-        double tmp[taille*taille];
-
-        for(int i=0;i<taille;i++)
-        {
-
-            for(int j=0;j<taille;j++)
-            {
-                tmp[i+j*taille]=m[i+j*p];
-            }
-        }
-
-       analyse2D_97(tmp,taille,taille);
-
-        for(int i=0;i<taille;i++)
-        {
-            for(int j=0;j<taille;j++)
-            {
-                m[i+j*p] = tmp[i+j*taille];
-            }
-        }
-    }
-
-//    for(int i=0;i<p;i++){
-//    for(int j=0;j<p;j++)
-//
-//        m[i+j*p]+=127;
-//    }
-}
-
-
-
 
 
 
@@ -237,7 +235,29 @@ void ajuster_image(double* m,int p){
             }
         }
 
+
+
        analyse2D_97(tmp,taille,taille);
+
+//       if(level==l-1){
+//
+//       double maxi=maximum(0,taille,tmp);
+//
+//
+//
+//
+//
+//            for(int i=0;i<taille;i++)
+//            {
+//
+//                for(int j=0;j<taille;j++)
+//                {
+//                    tmp[i+j*taille]/=maxi;
+//                    tmp[i+j*taille]*=255;
+//                }
+//            }
+//
+//       }
 
         for(int i=0;i<taille;i++)
         {
@@ -251,7 +271,7 @@ void ajuster_image(double* m,int p){
 //    for(int i=0;i<p;i++){
 //    for(int j=0;j<p;j++)
 //
-//        m[i+j*p]+=127;
+//        if(m[i+j*p]>5) m[i+j*p]+=127;
 //    }
 }
 
@@ -290,19 +310,21 @@ void ajuster_image(double* m,int p){
 
 
 
-double moyenne_band2D(int _i,int _j,double* x){
+double moyenne_band2D(double* x,int p){
 
 
-    double moyenne=x[_i];
+    double moyenne;
 
     double sum=0;
 
-    for(int i=_i;i<_j;i++){
+    for(int i=0;i<p;i++){
 
         sum+=x[i];
     }
 
-    moyenne=sum/(_j-_i);
+    moyenne=sum/p;
+
+    return moyenne;
 
 //    cout<<minimum<<endl;
 //    cout<<maximum<<endl;
@@ -312,23 +334,156 @@ double moyenne_band2D(int _i,int _j,double* x){
  }
 
 
-double variance_band2D(int _i,int _j,double* x){
+double variance_band2D(double* x,int p){
 
 
     double sum=0;
 
-    double moy=moyenne_band2D(_i,_j,x);
+    double moy=moyenne_band2D(x,p);
 
     double sigma=0;
 
-    for(int i=_i;i<_j;i++){
+    for(int i=0;i<p;i++){
 
         sum+=pow(x[i]-moy,2);
     }
 
-    sigma=sum/(_j-_i);
+    sigma=sum/p;
 
     return sigma;
 
  }
+
+
+void moyenne_variance_amr2D(double* m,int p,int l){
+
+
+int taille=p/pow(2,l);
+double tmp[taille*taille];
+
+
+for(int i=0;i<taille;i++)
+    {
+        for(int j=0;j<taille;j++)
+        {
+
+            tmp[i+taille*j]=m[i+j*p];
+           // cout<<m[i+j*p]<<" *";
+
+
+
+
+        }
+
+
+    }
+
+
+
+   cout<<moyenne_band2D(tmp,taille*taille)<<"  "<<variance_band2D(tmp,taille*taille)<<endl;
+
+for(int level=l;level>0;level--){
+
+    int taille=p/pow(2,level);
+    double tmp[taille*taille];
+
+
+
+
+
+    for(int i=0;i<taille;i++)
+    {
+        for(int j=taille;j<2*taille;j++)
+        {
+
+            tmp[i+taille*(j-taille)]=m[i+j*p];
+           //cout<<m[i+j*p]<<" ";
+
+
+
+
+        }
+
+
+    }
+
+
+
+      cout<<moyenne_band2D(tmp,taille*taille)<<"  "<<variance_band2D(tmp,taille*taille)<<endl;
+
+
+    for(int i=taille;i<2*taille;i++)
+    {
+
+
+        for(int j=0;j<taille;j++)
+        {
+
+            tmp[i-taille+taille*j]=m[i+j*p];
+           // cout<<m[i+j*p]<<" ";
+
+
+        }
+
+
+    }
+      cout<<moyenne_band2D(tmp,taille*taille)<<"  "<<variance_band2D(tmp,taille*taille)<<endl;
+
+    for(int i=taille;i<2*taille;i++)
+    {
+
+
+        for(int j=taille;j<2*taille;j++)
+        {
+
+            tmp[i-taille+taille*(j-taille)]=m[i+j*p];
+         //   cout<<m[i+j*p]<<" ";
+
+        }
+
+
+    }
+
+     cout<<moyenne_band2D(tmp,taille*taille)<<"  "<<variance_band2D(tmp,taille*taille)<<endl;
+
+
+ }
+
+
+
+//
+//    int taille = p/pow(2,l);
+//
+//
+//    double tmp[taille*taille];
+//   for(int i=0;i<taille;i++)
+//    {
+//
+//        for(int j=0;j<taille;j++)
+//        {
+//            tmp[i+j*taille]=m[i+j*p];
+//        }
+//    }
+//
+//    cout<<moyenne_band2D(tmp,taille)<<endl;
+//
+//
+//    for(int level=l-1;level>= 0;level--){
+//
+//        int taille=p/pow(2,level);
+//        double tmp[taille*taille];
+//
+//        for(int i=0;i<taille;i++)
+//        {
+//
+//            for(int j=0;j<taille;j++)
+//            {
+//                tmp[i+j*taille]=m[i+j*p];
+//            }
+//        }
+//
+//        cout<<moyenne_band2D(tmp,taille)<<endl;
+//    }
+
+}
 

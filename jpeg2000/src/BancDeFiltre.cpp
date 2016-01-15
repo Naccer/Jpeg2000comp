@@ -66,43 +66,6 @@ void convolve(double *x,int size_x, double *h, int size_h)
 
 }
 
-//void convolve(double* Signal, size_t SignalLen,const double Kernel[/* KernelLen */],
-//              size_t KernelLen
-//              )
-//{
-//
-//  double Result[ SignalLen + KernelLen-1 ];
-//  size_t n;
-//
-//  for (n = 0; n < SignalLen+KernelLen-1; n++)
-//  {
-//    size_t kmin, kmax, k;
-//
-//    Result[n] = 0;
-//
-//    kmin = (n >= KernelLen - 1) ? n - (KernelLen - 1) : 0;
-//    kmax = (n < SignalLen - 1) ? n : SignalLen - 1;
-//
-//    for (k = kmin; k <= kmax; k++)
-//    {
-//      Result[n] += Signal[k] * Kernel[n - k];
-//
-//    }
-//
-//
-//  }
-//
-//  for (int k = 0; k <= SignalLen; k++)
-//    {
-//
-//       Signal[k]=Result[k];
-//
-//    }
-//
-//
-//
-//}
-
 
 
 void analyse_haar(double* x,int p){
@@ -186,7 +149,7 @@ void synthese_haar(double* x,int p){
 
     }
 
-      print_signal(x,p);
+     // print_signal(x,p);
 
    // print_signal(x,p);
 
